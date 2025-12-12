@@ -1,12 +1,12 @@
 
-    while True:
-        print(f"water {datetime.now().strftime('2:30')} - Time to drink water!")
-        time.sleep(interval)
+    url = "https://picsum.photos/2000/3000"
+    pros = []
+    for i in range(10):
+    # donwloadFile(url, i)
 
-if __name__ == "__main__":
-    print("water reminder started! Press Ctrl+C to stop.")
-    try:
-        water_reminder()
-    except KeyboardInterrupt:
-        print("\nReminger stopped.")
+        p = multiprocessing.Process(target=donwloadFile, args=[url, i])
+        p.start()
+        pros.append(p)
 
+    for p in pros:
+     p.join()
